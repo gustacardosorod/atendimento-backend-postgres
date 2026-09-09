@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: atendimento-api
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/atendimento_db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  jackson:
+    time-zone: America/Sao_Paulo
+server:
+  port: ${SERVER_PORT:8080}
+  error:
+    include-message: never
+    include-stacktrace: never
+app:
+  jwt:
+    secret: ${JWT_SECRET:c3VwZXItc2VncmVkby1qd3QtY29tLW1haXMtZGUtMzItY2FyYWN0ZXJlcw==}
+    expiration: ${JWT_EXPIRATION:3600000}
+  cors:
+    allowed-origin: ${CORS_ORIGIN:http://localhost:5500}
+  bootstrap-admin:
+    name: ${BOOTSTRAP_ADMIN_NAME:}
+    email: ${BOOTSTRAP_ADMIN_EMAIL:}
+    password: ${BOOTSTRAP_ADMIN_PASSWORD:}
+logging:
+  level:
+    org.hibernate.SQL: info

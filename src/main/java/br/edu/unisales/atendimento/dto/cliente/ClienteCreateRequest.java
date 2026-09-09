@@ -1,0 +1,3 @@
+package br.edu.unisales.atendimento.dto.cliente;
+import jakarta.validation.constraints.*;
+public record ClienteCreateRequest(@NotBlank(message="Nome é obrigatório") @Size(min=3,max=120) String nome,@NotBlank(message="CPF é obrigatório") @Pattern(regexp="\\d{11}",message="CPF deve possuir 11 números") String cpf,@NotBlank(message="E-mail é obrigatório") @Email(message="E-mail inválido") String email,@Pattern(regexp="^$|\\d{10,11}$",message="Telefone deve possuir 10 ou 11 números") String telefone,@NotBlank(message="Senha é obrigatória") @Size(min=8,max=72,message="Senha deve possuir entre 8 e 72 caracteres") String senha){}

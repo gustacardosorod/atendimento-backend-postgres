@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:atendimento;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+  flyway:
+    enabled: false
+app:
+  jwt:
+    secret: c3VwZXItc2VncmVkby1qd3QtY29tLW1haXMtZGUtMzItY2FyYWN0ZXJlcw==
+    expiration: 3600000
+  cors:
+    allowed-origin: http://localhost:5500
+  bootstrap-admin:
+    name:
+    email:
+    password:

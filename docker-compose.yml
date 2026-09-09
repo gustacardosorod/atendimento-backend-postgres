@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: atendimento-postgres
+    environment:
+      POSTGRES_DB: atendimento_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - atendimento_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d atendimento_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+volumes:
+  atendimento_pgdata:

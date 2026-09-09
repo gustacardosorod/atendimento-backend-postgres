@@ -1,0 +1,55 @@
+@baseUrl = http://localhost:8080
+@token = COLE_SEU_TOKEN_AQUI
+
+### Registrar cliente
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "nome": "Maria Silva",
+  "cpf": "12345678900",
+  "email": "maria@email.com",
+  "telefone": "27999999999",
+  "senha": "Senha@123"
+}
+
+### Login
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "maria@email.com",
+  "senha": "Senha@123"
+}
+
+### Meu perfil
+GET {{baseUrl}}/api/clientes/me
+Authorization: Bearer {{token}}
+
+### Abrir chamado
+POST {{baseUrl}}/api/chamados
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "titulo": "Problema para acessar o sistema",
+  "descricao": "Não consigo acessar minha conta desde ontem.",
+  "prioridade": "MEDIA"
+}
+
+### Listar chamados visíveis para o usuário
+GET {{baseUrl}}/api/chamados
+Authorization: Bearer {{token}}
+
+### Comentário
+POST {{baseUrl}}/api/chamados/1/comentarios
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "texto": "O problema continua acontecendo."
+}
+
+### Histórico
+GET {{baseUrl}}/api/chamados/1/historico
+Authorization: Bearer {{token}}

@@ -1,0 +1,3 @@
+CREATE DATABASE atendimento_db
+    WITH ENCODING = 'UTF8'
+    CONNECTION LIMIT = -1;
