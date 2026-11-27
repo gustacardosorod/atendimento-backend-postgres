@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer">
+    <title>Relatório de chamados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../../assets/css/global.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/dashboard.css">
+</head>
+<body class="app-body" data-page="admin-relatorios">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="app">
+        <aside class="sidebar" id="sidebar"></aside>
+        <div class="app-main">
+            <header class="topbar" id="topbar"></header>
+            <main class="conteudo" id="conteudo" tabindex="-1">
+                <div class="pagina-cabecalho">
+                    <div>
+                        <h1>Relatório de chamados</h1>
+                        <p class="subtitulo">Totais consolidados de todos os chamados registrados, por status e por prioridade.</p>
+                    </div>
+                    <div class="pagina-acoes">
+                        <button type="button" class="btn btn-secundario" id="btn-atualizar"><span data-icone="atualizar"></span> Atualizar</button>
+                        <button type="button" class="btn btn-primario" id="btn-imprimir"><span data-icone="imprimir"></span> Imprimir</button>
+                    </div>
+                </div>
+
+                <p class="relatorio-meta" id="meta"></p>
+                <section class="indicadores" id="indicadores" aria-label="Totais"></section>
+
+                <div class="grid">
+                    <section class="card col-6" aria-labelledby="t-status">
+                        <header class="card-cabecalho"><h2 id="t-status">Por status</h2></header>
+                        <div id="por-status"></div>
+                    </section>
+                    <section class="card col-6" aria-labelledby="t-prioridade">
+                        <header class="card-cabecalho"><h2 id="t-prioridade">Por prioridade</h2></header>
+                        <div id="por-prioridade"></div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div class="toast-regiao" id="toasts" aria-live="polite"></div>
+    <noscript><p class="alerta alerta-erro">Este sistema precisa de JavaScript habilitado.</p></noscript>
+    <script type="module" src="../../assets/js/pages/admin.js"></script>
+</body>
+</html>

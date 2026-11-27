@@ -1,0 +1,201 @@
+/* ==========================================================================
+   dashboard.css — indicadores, distribuição por status, atalhos, relatório
+   ========================================================================== */
+
+.indicadores {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-bottom: var(--e-4);
+    background: var(--c-superficie);
+    border: 1px solid var(--c-borda);
+    border-radius: var(--raio-card);
+    box-shadow: var(--sombra);
+}
+
+.indicadores.seis { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+
+.indicador {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: var(--e-4);
+    min-width: 0;
+    text-decoration: none;
+    color: inherit;
+}
+
+.indicador + .indicador { border-left: 1px solid var(--c-borda); }
+
+a.indicador { transition: background-color 0.16s ease; }
+a.indicador:hover { background: var(--c-primaria-suave); }
+
+.indicador-rotulo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--t-xs);
+    color: var(--c-texto-3);
+}
+
+.indicador-valor {
+    font-family: var(--fonte-mono);
+    font-size: 1.625rem;
+    font-weight: 500;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+    color: var(--c-texto);
+}
+
+.indicador-detalhe { font-size: var(--t-xs); color: var(--c-texto-3); }
+
+.indicador.destaque .indicador-valor { color: var(--c-erro); }
+.indicador.atencao .indicador-valor { color: var(--c-aviso); }
+
+.marcador {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.m-aberto { background: #3f6fa8; }
+.m-em_atendimento { background: #c48a14; }
+.m-aguardando_cliente { background: #7a6c94; }
+.m-resolvido { background: #3f8a52; }
+.m-encerrado { background: #a8a29e; }
+.m-cancelado { background: #b55245; }
+.m-baixa { background: #a8a29e; }
+.m-media { background: #c48a14; }
+.m-alta { background: #cc6a26; }
+.m-critica { background: #b0372a; }
+
+/* Distribuição em barras horizontais */
+.distribuicao { display: flex; flex-direction: column; }
+
+.distribuicao-item {
+    display: grid;
+    grid-template-columns: minmax(120px, 1.2fr) 3fr 64px;
+    align-items: center;
+    gap: var(--e-3);
+    padding: 9px var(--e-4);
+    border-bottom: 1px solid var(--c-borda);
+    font-size: var(--t-sm);
+}
+
+.distribuicao-item:last-child { border-bottom: 0; }
+
+.distribuicao-rotulo { display: flex; align-items: center; gap: var(--e-2); }
+
+.barra {
+    height: 8px;
+    border-radius: 2px;
+    background: var(--c-fundo);
+    overflow: hidden;
+}
+
+.barra-preenchida { height: 100%; border-radius: 2px; }
+
+.distribuicao-valor {
+    font-family: var(--fonte-mono);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.distribuicao-valor small { color: var(--c-texto-3); margin-left: 4px; }
+
+/* Atalhos */
+.lista-atalhos li + li { border-top: 1px solid var(--c-borda); }
+
+.lista-atalhos a {
+    display: grid;
+    grid-template-columns: 20px 1fr 16px;
+    align-items: center;
+    gap: var(--e-3);
+    padding: 12px var(--e-4);
+    color: var(--c-texto);
+    text-decoration: none;
+}
+
+.lista-atalhos a { transition: background-color 0.16s ease; }
+.lista-atalhos a:hover { background: var(--c-primaria-suave); }
+.lista-atalhos a .icone:last-child { transition: transform 0.2s var(--curva); }
+.lista-atalhos a:hover .icone:last-child { transform: translateX(3px); color: var(--c-primaria); }
+.lista-atalhos .icone { color: var(--c-texto-3); }
+.lista-atalhos strong { display: block; font-weight: 500; font-size: var(--t-sm); }
+.lista-atalhos span { font-size: var(--t-xs); color: var(--c-texto-3); }
+
+.passos { counter-reset: passo; padding: var(--e-4); display: flex; flex-direction: column; gap: var(--e-3); }
+
+.passos li {
+    counter-increment: passo;
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: var(--e-2);
+    font-size: var(--t-sm);
+    color: var(--c-texto-2);
+}
+
+.passos li::before {
+    content: counter(passo);
+    display: inline-grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--c-borda-forte);
+    border-radius: 50%;
+    font-family: var(--fonte-mono);
+    font-size: 11px;
+    color: var(--c-texto-3);
+}
+
+.identificacao-atendente {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--e-3);
+    font-size: var(--t-sm);
+}
+
+/* Relatório */
+.relatorio-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-2) var(--e-4);
+    margin-bottom: var(--e-4);
+    font-size: var(--t-xs);
+    color: var(--c-texto-3);
+}
+
+.tabela tfoot td {
+    padding: 10px var(--e-4);
+    border-top: 1px solid var(--c-borda-forte);
+    font-weight: 600;
+    background: var(--c-superficie-2);
+}
+
+@media (max-width: 1023px) {
+    .indicadores,
+    .indicadores.seis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .indicadores .indicador:nth-child(3n + 1) { border-left: 0; }
+    .indicadores .indicador:nth-child(n + 4) { border-top: 1px solid var(--c-borda); }
+    .indicadores:not(.seis) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .indicadores:not(.seis) .indicador { border-left: 0; border-top: 0; }
+    .indicadores:not(.seis) .indicador:nth-child(even) { border-left: 1px solid var(--c-borda); }
+    .indicadores:not(.seis) .indicador:nth-child(n + 3) { border-top: 1px solid var(--c-borda); }
+}
+
+@media (max-width: 639px) {
+    .indicadores.seis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .indicadores.seis .indicador { border-left: 0; border-top: 0; }
+    .indicadores.seis .indicador:nth-child(even) { border-left: 1px solid var(--c-borda); }
+    .indicadores.seis .indicador:nth-child(n + 3) { border-top: 1px solid var(--c-borda); }
+    .distribuicao-item { grid-template-columns: 1fr 64px; }
+    .distribuicao-item .barra { grid-column: 1 / -1; grid-row: 2; }
+}
+
+@media print {
+    .tabela tfoot td, .tabela th { background: #fff; }
+    .barra { border: 1px solid #ccc; }
+}
+
+.distribuicao + .tabela-wrap { border-top: 1px solid var(--c-borda); }

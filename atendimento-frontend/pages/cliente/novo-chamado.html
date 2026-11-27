@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer">
+    <title>Abrir chamado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../../assets/css/global.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/chamados.css">
+</head>
+<body class="app-body" data-page="cliente-novo-chamado">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="app">
+        <aside class="sidebar" id="sidebar"></aside>
+        <div class="app-main">
+            <header class="topbar" id="topbar"></header>
+            <main class="conteudo" id="conteudo" tabindex="-1">
+                <div class="pagina-cabecalho">
+                    <div>
+                        <h1>Abrir chamado</h1>
+                        <p class="subtitulo">Descreva a situação com o máximo de detalhes. A equipe responde pelos comentários do próprio chamado.</p>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <section class="card col-8" aria-labelledby="t-form">
+                        <header class="card-cabecalho"><h2 id="t-form">Dados da solicitação</h2></header>
+                        <form class="form card-corpo" id="form-chamado" novalidate>
+                            <div class="campo">
+                                <label class="campo-label" for="titulo">Título <span class="obrigatorio" aria-hidden="true">*</span></label>
+                                <input class="input" id="titulo" name="titulo" type="text" maxlength="150" required placeholder="Ex.: Boleto de novembro não aparece na área do cliente">
+                                <div class="campo-rodape">
+                                    <span class="campo-hint">Resumo em uma linha (5 a 150 caracteres).</span>
+                                    <span class="contador-caracteres" id="cont-titulo"></span>
+                                </div>
+                            </div>
+
+                            <div class="campo">
+                                <label class="campo-label" for="descricao">Descrição <span class="obrigatorio" aria-hidden="true">*</span></label>
+                                <textarea class="input" id="descricao" name="descricao" rows="8" maxlength="5000" required placeholder="O que aconteceu, quando começou, o que você já tentou e as mensagens exibidas."></textarea>
+                                <div class="campo-rodape">
+                                    <span class="campo-hint">Mínimo de 10 caracteres.</span>
+                                    <span class="contador-caracteres" id="cont-descricao"></span>
+                                </div>
+                            </div>
+
+                            <div id="area-prioridade"></div>
+
+                            <div class="form-acoes">
+                                <a class="btn btn-secundario" href="dashboard.html">Cancelar</a>
+                                <button type="submit" class="btn btn-primario" id="btn-enviar">Abrir chamado</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <aside class="col-4 pilha">
+                        <section class="card card-nota" aria-labelledby="t-dicas">
+                            <header class="card-cabecalho"><h2 id="t-dicas">Antes de enviar</h2></header>
+                            <ul class="lista-dicas">
+                                <li><span data-icone="check" data-tamanho="14"></span><span>Abra um chamado por assunto; isso agiliza a triagem.</span></li>
+                                <li><span data-icone="check" data-tamanho="14"></span><span>Informe datas, números de pedido ou de boleto relacionados.</span></li>
+                                <li><span data-icone="alerta" data-tamanho="14"></span><span>Não escreva senhas nem dados de cartão na descrição.</span></li>
+                            </ul>
+                        </section>
+
+                        <section class="card" aria-labelledby="t-prioridades">
+                            <header class="card-cabecalho"><h2 id="t-prioridades">Qual prioridade escolher</h2></header>
+                            <dl class="dl-prioridades">
+                                <div><dt><span class="badge badge-prioridade p-baixa">Baixa</span></dt><dd>Dúvidas e ajustes que não atrapalham o uso.</dd></div>
+                                <div><dt><span class="badge badge-prioridade p-media">Média</span></dt><dd>Parte do serviço apresenta falha, mas há alternativa.</dd></div>
+                                <div><dt><span class="badge badge-prioridade p-alta">Alta</span></dt><dd>Você não consegue concluir uma tarefa importante.</dd></div>
+                                <div><dt><span class="badge badge-prioridade p-critica">Crítica</span></dt><dd>O serviço está totalmente indisponível.</dd></div>
+                            </dl>
+                        </section>
+                    </aside>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div class="toast-regiao" id="toasts" aria-live="polite"></div>
+    <noscript><p class="alerta alerta-erro">Este sistema precisa de JavaScript habilitado.</p></noscript>
+    <script type="module" src="../../assets/js/pages/cliente.js"></script>
+</body>
+</html>

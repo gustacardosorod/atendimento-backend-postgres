@@ -1,0 +1,149 @@
+/* ==========================================================================
+   auth.css — login e cadastro (layout dividido, sem hero centralizado)
+   ========================================================================== */
+
+.auth {
+    display: grid;
+    grid-template-columns: minmax(320px, 5fr) 7fr;
+    min-height: 100vh;
+    background: var(--c-superficie);
+}
+
+.auth-painel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--e-6);
+    padding: var(--e-6) 40px;
+    background: var(--c-lagoa);   /* mesmo teal da ilustração: a imagem se funde ao painel */
+    color: var(--c-tinta);
+    overflow: hidden;
+}
+
+/* Texto sobre o teal claro usa azul-tinta: branco teria contraste 2,6:1 (abaixo do AA). */
+.auth-painel .marca-nome { color: #062a31; }
+.auth-painel .marca-sub { color: var(--c-tinta); }
+.auth-painel .marca-logo { border-color: #fff; }
+
+.auth-marca {
+    display: flex;
+    align-items: center;
+    gap: var(--e-3);
+}
+
+.auth-painel h2 {
+    color: #062a31;
+    font-size: var(--t-lg);
+    font-weight: 600;
+    max-width: 22ch;
+    line-height: 1.3;
+}
+
+.auth-painel .auth-intro { margin-top: var(--e-3); max-width: 44ch; color: var(--c-tinta); }
+
+.auth-recursos {
+    display: flex;
+    flex-direction: column;
+    gap: var(--e-4);
+    margin-top: var(--e-5);
+    padding-top: var(--e-5);
+    border-top: 1px solid rgba(11, 59, 68, 0.18);
+}
+
+.auth-recursos li {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: var(--e-3);
+}
+
+.auth-recursos .icone { color: #062a31; margin-top: 2px; }
+.auth-recursos strong { display: block; color: #062a31; font-weight: 600; }
+.auth-recursos span { font-size: var(--t-sm); color: var(--c-tinta); }
+
+.auth-rodape {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-2) var(--e-4);
+    font-size: var(--t-xs);
+    color: var(--c-tinta);
+}
+
+/* Ilustração da tela de entrada: ocupa a largura do painel, encostada nas bordas. */
+.auth-ilustracao {
+    flex: 1 1 0;           /* ocupa o espaço livre do painel, sem empurrar o rodapé */
+    min-height: 140px;
+    margin: 0 -40px;
+    overflow: hidden;
+}
+
+.auth-ilustracao img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    /* Bordas suavizadas: o centro mais claro da ilustração se dissolve no teal do painel. */
+    -webkit-mask-image: radial-gradient(ellipse 72% 72% at 50% 55%, #000 62%, transparent 100%);
+    mask-image: radial-gradient(ellipse 72% 72% at 50% 55%, #000 62%, transparent 100%);
+    animation: ilustracao-entrar 0.6s var(--curva) 0.1s both;
+}
+
+@keyframes ilustracao-entrar { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* Formulário entra uma vez ao abrir a página. */
+.auth-form-area { animation: conteudo-entrar 0.4s var(--curva) both; }
+
+.auth-conteudo {
+    display: flex;
+    align-items: center;
+    padding: var(--e-6) clamp(24px, 6vw, 96px);
+}
+
+.auth-form-area {
+    width: 100%;
+    max-width: 400px;
+}
+
+.auth-form-area.largo { max-width: 560px; }
+
+.auth-form-area h1 { font-size: var(--t-xl); }
+.auth-form-area .subtitulo { margin-bottom: var(--e-5); }
+
+.auth-troca {
+    margin-top: var(--e-5);
+    padding-top: var(--e-4);
+    border-top: 1px solid var(--c-borda);
+    font-size: var(--t-sm);
+    color: var(--c-texto-3);
+}
+
+.auth-troca a { font-weight: 500; }
+
+.auth-aviso-seguranca {
+    display: flex;
+    gap: var(--e-2);
+    margin-top: var(--e-4);
+    font-size: var(--t-xs);
+    color: var(--c-texto-3);
+}
+
+.auth-aviso-seguranca .icone { flex-shrink: 0; margin-top: 2px; }
+
+@media (max-width: 1023px) {
+    .auth { grid-template-columns: 1fr; }
+
+    .auth-painel {
+        padding: var(--e-4) var(--e-5);
+        gap: 0;
+    }
+
+    .auth-painel .auth-apresentacao,
+    .auth-ilustracao,
+    .auth-rodape { display: none; }
+
+    .auth-conteudo { align-items: flex-start; padding: var(--e-6) var(--e-5); }
+}
+
+@media (max-width: 639px) {
+    .auth-conteudo { padding: var(--e-5) var(--e-4); }
+}

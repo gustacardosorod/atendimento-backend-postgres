@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer">
+    <title>Entrar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+<body>
+    <a class="skip-link" href="#form-login">Pular para o formulário</a>
+
+    <div class="auth">
+        <aside class="auth-painel">
+            <div class="auth-marca">
+                <img class="marca-logo" src="assets/img/logo-atendimento.png" alt="" width="40" height="40">
+                <div>
+                    <p class="marca-nome">Central de Atendimento</p>
+                    <p class="marca-sub">Sistema de Gestão de Atendimento</p>
+                </div>
+            </div>
+
+            <div class="auth-apresentacao">
+                <h2>Atendimento organizado, registrado e seguro.</h2>
+                <p class="auth-intro">Centralize as solicitações dos clientes em um único ambiente, com responsáveis definidos e todo o histórico disponível para consulta.</p>
+
+                <ul class="auth-recursos">
+                    <li>
+                        <span data-icone="chamados" data-tamanho="18"></span>
+                        <div><strong>Transparência para o cliente</strong><span>Status, prioridade e respostas da equipe ficam visíveis em cada chamado, sem precisar de contato por outros canais.</span></div>
+                    </li>
+                    <li>
+                        <span data-icone="historico" data-tamanho="18"></span>
+                        <div><strong>Histórico auditável</strong><span>Cada ação fica registrada com data, hora e autor, o que permite reconstruir o atendimento completo.</span></div>
+                    </li>
+                    <li>
+                        <span data-icone="usuarios" data-tamanho="18"></span>
+                        <div><strong>Acesso controlado</strong><span>As permissões são validadas no servidor; cada perfil acessa somente o que lhe compete.</span></div>
+                    </li>
+                </ul>
+            </div>
+
+            <figure class="auth-ilustracao">
+                <img src="assets/img/ilustracao-login.webp" alt="" width="1200" height="699" decoding="async">
+            </figure>
+
+            <div class="auth-rodape">
+                <span>UniSales · Engenharia de Software</span>
+                <span class="mono">v1.0</span>
+            </div>
+        </aside>
+
+        <main class="auth-conteudo">
+            <div class="auth-form-area">
+                <h1>Entrar</h1>
+                <p class="subtitulo">Use o e-mail e a senha cadastrados.</p>
+
+                <div id="aviso-login"></div>
+
+                <form id="form-login" class="form" novalidate>
+                    <div class="campo">
+                        <label class="campo-label" for="email">E-mail</label>
+                        <input class="input" id="email" name="email" type="email" autocomplete="username" required autofocus>
+                    </div>
+
+                    <div class="campo">
+                        <label class="campo-label" for="senha">Senha</label>
+                        <div class="campo-senha">
+                            <input class="input" id="senha" name="senha" type="password" autocomplete="current-password" required>
+                            <button type="button" class="btn-icone" id="alternar-senha" aria-label="Mostrar senha" aria-pressed="false">
+                                <span data-icone="olho"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primario btn-bloco" id="btn-entrar">Entrar</button>
+                </form>
+
+                <p class="auth-aviso-seguranca">
+                    <span data-icone="info" data-tamanho="14"></span>
+                    A sessão é encerrada ao fechar a aba ou quando o token expira.
+                </p>
+
+                <p class="auth-troca">Ainda não tem acesso? <a href="cadastro.html">Criar conta de cliente</a></p>
+            </div>
+        </main>
+    </div>
+
+    <noscript><p class="alerta alerta-erro">Este sistema precisa de JavaScript habilitado.</p></noscript>
+    <script type="module" src="assets/js/pages/login.js"></script>
+</body>
+</html>

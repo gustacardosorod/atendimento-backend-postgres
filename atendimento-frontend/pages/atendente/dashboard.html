@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer">
+    <title>Painel do atendente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../../assets/css/global.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/dashboard.css">
+</head>
+<body class="app-body" data-page="atendente-dashboard">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="app">
+        <aside class="sidebar" id="sidebar"></aside>
+        <div class="app-main">
+            <header class="topbar" id="topbar"></header>
+            <main class="conteudo" id="conteudo" tabindex="-1">
+                <div class="pagina-cabecalho">
+                    <div>
+                        <p class="sobretitulo" id="data-hoje"></p>
+                        <h1 id="saudacao">Painel</h1>
+                        <p class="subtitulo">Situação atual da fila e dos chamados sob sua responsabilidade.</p>
+                    </div>
+                    <div class="pagina-acoes">
+                        <button type="button" class="btn btn-secundario" id="btn-atualizar"><span data-icone="atualizar"></span> Atualizar</button>
+                        <a class="btn btn-primario" href="chamados.html"><span data-icone="fila"></span> Abrir fila</a>
+                    </div>
+                </div>
+
+                <section class="indicadores seis" id="indicadores" aria-label="Chamados por status"></section>
+
+                <div class="grid">
+                    <section class="card col-12" aria-labelledby="t-sem-atendente">
+                        <header class="card-cabecalho">
+                            <h2 id="t-sem-atendente">Aguardando atribuição</h2>
+                            <a class="link-discreto" href="chamados.html?visao=sem-atendente">Ver na fila</a>
+                        </header>
+                        <div id="sem-atendente"></div>
+                    </section>
+
+                    <section class="card col-12" aria-labelledby="t-meus">
+                        <header class="card-cabecalho">
+                            <h2 id="t-meus">Sob sua responsabilidade</h2>
+                            <a class="link-discreto" href="chamados.html?visao=meus">Ver na fila</a>
+                        </header>
+                        <div id="meus"></div>
+                        <footer class="card-rodape"><div class="identificacao-atendente" id="identificacao"></div></footer>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div class="toast-regiao" id="toasts" aria-live="polite"></div>
+    <noscript><p class="alerta alerta-erro">Este sistema precisa de JavaScript habilitado.</p></noscript>
+    <script type="module" src="../../assets/js/pages/atendente.js"></script>
+</body>
+</html>

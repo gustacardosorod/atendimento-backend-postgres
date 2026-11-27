@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer">
+    <title>Atendentes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../../assets/css/global.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+</head>
+<body class="app-body" data-page="admin-atendentes">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="app">
+        <aside class="sidebar" id="sidebar"></aside>
+        <div class="app-main">
+            <header class="topbar" id="topbar"></header>
+            <main class="conteudo" id="conteudo" tabindex="-1">
+                <div class="pagina-cabecalho">
+                    <div>
+                        <h1>Atendentes</h1>
+                        <p class="subtitulo">Cadastre a equipe de atendimento. O ID exibido na lista é o que o atendente informa para assumir chamados.</p>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <section class="card col-4" aria-labelledby="t-novo">
+                        <header class="card-cabecalho"><h2 id="t-novo">Novo atendente</h2></header>
+                        <form class="form card-corpo" id="form-atendente" novalidate>
+                            <div class="campo">
+                                <label class="campo-label" for="nome">Nome completo <span class="obrigatorio" aria-hidden="true">*</span></label>
+                                <input class="input" id="nome" name="nome" type="text" maxlength="120" autocomplete="off" required>
+                            </div>
+                            <div class="campo">
+                                <label class="campo-label" for="email">E-mail <span class="obrigatorio" aria-hidden="true">*</span></label>
+                                <input class="input" id="email" name="email" type="email" autocomplete="off" required>
+                                <p class="campo-hint">Usado como login do atendente.</p>
+                            </div>
+                            <div class="campo">
+                                <label class="campo-label" for="matricula">Matrícula <span class="obrigatorio" aria-hidden="true">*</span></label>
+                                <input class="input mono" id="matricula" name="matricula" type="text" maxlength="30" autocomplete="off" required placeholder="ATD-0001">
+                            </div>
+                            <div class="campo">
+                                <label class="campo-label" for="senha">Senha inicial <span class="obrigatorio" aria-hidden="true">*</span></label>
+                                <input class="input" id="senha" name="senha" type="password" minlength="8" maxlength="72" autocomplete="new-password" required>
+                                <p class="campo-hint">Entre 8 e 72 caracteres. Repasse ao atendente por canal seguro.</p>
+                            </div>
+                            <div class="form-acoes">
+                                <button type="reset" class="btn btn-fantasma">Limpar</button>
+                                <button type="submit" class="btn btn-primario" id="btn-cadastrar">Cadastrar</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <section class="card col-8" aria-labelledby="t-equipe">
+                        <header class="card-cabecalho">
+                            <h2 id="t-equipe">Equipe <span class="contador" id="qtd"></span></h2>
+                            <button type="button" class="btn btn-fantasma btn-sm" id="btn-atualizar"><span data-icone="atualizar"></span> Atualizar</button>
+                        </header>
+                        <div id="lista"></div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div class="toast-regiao" id="toasts" aria-live="polite"></div>
+    <noscript><p class="alerta alerta-erro">Este sistema precisa de JavaScript habilitado.</p></noscript>
+    <script type="module" src="../../assets/js/pages/admin.js"></script>
+</body>
+</html>

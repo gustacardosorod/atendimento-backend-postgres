@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer">
+    <title>Chamados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../../assets/css/global.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/chamados.css">
+</head>
+<body class="app-body" data-page="detalhe-chamado">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="app">
+        <aside class="sidebar" id="sidebar"></aside>
+        <div class="app-main">
+            <header class="topbar" id="topbar"></header>
+            <main class="conteudo" id="conteudo" tabindex="-1">
+                <a class="link-voltar" id="link-voltar" href="#"><span data-icone="voltar" data-tamanho="14"></span> </a>
+
+                <div id="detalhe-estado" class="card"></div>
+
+                <div id="detalhe-conteudo" hidden>
+                    <div class="detalhe-cabecalho" id="cabecalho"></div>
+
+                    <div class="detalhe-grid">
+                        <div class="detalhe-principal">
+                            <section class="card" aria-labelledby="t-descricao">
+                                <header class="card-cabecalho"><h2 id="t-descricao">Descrição</h2></header>
+                                <div class="card-corpo"><p class="texto-descricao" id="descricao"></p></div>
+                            </section>
+
+                            <section class="card" aria-labelledby="t-comentarios">
+                                <header class="card-cabecalho">
+                                    <h2 id="t-comentarios">Comentários <span class="contador" id="qtd-comentarios">0</span></h2>
+                                </header>
+                                <ol class="thread" id="comentarios" aria-live="polite"></ol>
+
+                                <form class="form-comentario" id="form-comentario" novalidate>
+                                    <div class="campo">
+                                        <label class="campo-label" for="texto">Adicionar comentário</label>
+                                        <textarea class="input" id="texto" name="texto" rows="4" maxlength="2000" placeholder="Descreva a atualização, a resposta ao cliente ou a informação solicitada."></textarea>
+                                        <div class="campo-rodape">
+                                            <span class="campo-hint">O texto é exibido exatamente como digitado, sem formatação.</span>
+                                            <span class="contador-caracteres" id="cont-texto">0/2000</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-acoes">
+                                        <button type="submit" class="btn btn-primario"><span data-icone="mensagem"></span> Enviar comentário</button>
+                                    </div>
+                                </form>
+                            </section>
+                        </div>
+
+                        <aside class="detalhe-lateral">
+                            <section class="card" id="painel-acoes" aria-labelledby="t-acoes" hidden>
+                                <header class="card-cabecalho"><h2 id="t-acoes">Ações da equipe</h2></header>
+                                <div class="card-corpo" id="acoes"></div>
+                            </section>
+
+                            <section class="card" aria-labelledby="t-dados">
+                                <header class="card-cabecalho"><h2 id="t-dados">Informações</h2></header>
+                                <dl class="dl-dados" id="dados"></dl>
+                            </section>
+
+                            <section class="card" aria-labelledby="t-historico">
+                                <header class="card-cabecalho"><h2 id="t-historico">Histórico</h2></header>
+                                <ol class="timeline" id="historico"></ol>
+                            </section>
+                        </aside>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div class="toast-regiao" id="toasts" aria-live="polite"></div>
+    <noscript><p class="alerta alerta-erro">Este sistema precisa de JavaScript habilitado.</p></noscript>
+    <script type="module" src="../../assets/js/pages/chamado.js"></script>
+</body>
+</html>

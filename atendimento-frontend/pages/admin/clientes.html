@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer">
+    <title>Clientes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../../assets/css/global.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+</head>
+<body class="app-body" data-page="admin-clientes">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="app">
+        <aside class="sidebar" id="sidebar"></aside>
+        <div class="app-main">
+            <header class="topbar" id="topbar"></header>
+            <main class="conteudo" id="conteudo" tabindex="-1">
+                <div class="pagina-cabecalho">
+                    <div>
+                        <h1>Clientes</h1>
+                        <p class="subtitulo">Consulte, edite e inative cadastros de clientes. A inativação bloqueia novos acessos do cliente.</p>
+                    </div>
+                </div>
+
+                <section class="card" aria-labelledby="t-clientes">
+                    <h2 class="sr-only" id="t-clientes">Consulta de clientes</h2>
+                    <form class="filtros" id="form-busca" role="search" aria-label="Buscar clientes" novalidate>
+                        <div class="campo">
+                            <span class="campo-label" id="l-modo">Buscar por</span>
+                            <div class="segmentado" role="group" aria-labelledby="l-modo" id="modos">
+                                <button type="button" data-modo="nome" aria-pressed="true">Nome</button>
+                                <button type="button" data-modo="cpf" aria-pressed="false">CPF</button>
+                            </div>
+                        </div>
+                        <div class="campo campo-busca">
+                            <label class="campo-label" for="termo" id="rotulo-termo">Nome do cliente</label>
+                            <div class="campo-busca-wrap"><span data-icone="busca"></span><input class="input" id="termo" name="termo" type="search" autocomplete="off" placeholder="Parte do nome"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primario">Buscar</button>
+                        <button type="button" class="btn btn-fantasma" id="btn-limpar">Limpar</button>
+                    </form>
+                    <p class="resumo-lista" id="resumo" aria-live="polite"></p>
+                    <div id="lista"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+    <div class="toast-regiao" id="toasts" aria-live="polite"></div>
+    <noscript><p class="alerta alerta-erro">Este sistema precisa de JavaScript habilitado.</p></noscript>
+    <script type="module" src="../../assets/js/pages/admin.js"></script>
+</body>
+</html>
