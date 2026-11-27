@@ -155,18 +155,3 @@ Os guards do front (`requireRole`) apenas evitam navegação indevida. **Quem de
 - **Transições de status:** o seletor oferece todos os status diferentes do atual; a API aceita ou rejeita (400) e a mensagem dela aparece no formulário. O front não replica a máquina de estados.
 - **"Assumir" pelo atendente:** o `PATCH …/atendente/{atendenteId}` exige o ID da entidade Atendente, mas o login devolve `usuarioId`, e `GET /api/atendentes` é restrito ao ADMIN. Sem alterar o back-end, o front (1) descobre o ID em chamados já atribuídos ao atendente logado ou (2) pede o ID uma vez. O admin vê esse ID na tela Atendentes. O valor fica só no `sessionStorage`, e a resposta da API é conferida: se o chamado foi atribuído a outra pessoa, o front avisa e descarta o ID.
 
-## Checklist de segurança (seção 20 do FRONTEND_GUIDE.md)
-
-- [x] **Senha nunca armazenada pelo front-end:** só trafega no corpo do login/cadastro; `sessionStorage` guarda `token`, `usuarioId`, `nome`, `email`, `perfil`.
-- [x] **JWT não incluído em URL:** só no header `Authorization: Bearer` (`api.js`). As URLs carregam apenas o ID do chamado e filtros de visão.
-- [x] **Nenhuma página chama o banco diretamente:** todo acesso passa por `api.js` → API REST.
-- [x] **Comentários renderizados com `textContent`:** o projeto inteiro não usa `innerHTML`. O helper `el()` cria nós de texto, e até os ícones SVG são montados com `createElementNS`.
-- [x] **CPF não exposto além do necessário:** mascarado em listagens, perfil e modais. Na busca, o CPF digitado vai no caminho da requisição à API, como o contrato exige, e nunca na URL da página.
-- [x] **Páginas protegidas possuem guard:** `iniciarPagina` → `requireRole(...)` antes de qualquer render. O `<body class="app-body">` fica oculto até o guard liberar.
-- [x] **Back-end continua validando todas as permissões:** nenhuma regra de autorização ou de negócio foi movida para o JS.
-- [x] **401 encerra a sessão:** `sessionStorage.clear()` + redirecionamento para `index.html?sessao=expirada`, com aviso. No login, um 401 significa credencial inválida e é exibido no formulário.
-- [x] **403 não é tratado como erro interno:** mensagem fixa de permissão.
-- [x] **Erros 500 não exibem detalhes técnicos:** mensagem genérica; o corpo da resposta é descartado.
-- [x] **Nenhuma credencial real é versionada:** o README e o código não contêm senhas; o admin vem de variáveis de ambiente do back-end.
-
-Itens adicionais: `<meta name="referrer" content="no-referrer">` em todas as páginas; `encodeURIComponent` em segmentos de caminho e query string; sessão em `sessionStorage` (expira ao fechar a aba).
